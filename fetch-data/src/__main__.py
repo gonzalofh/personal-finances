@@ -2,12 +2,26 @@ import json
 import keyring
 import os
 
+from plaid import Plaid
+from plaid_response_mapper import map_balance
 from robinhood import Robinhood
-from decouple import config
+from env_loader import load_env
+from pathlib import Path
+
+
+ENV_PATH = Path(__file__).parent.parent
+env = load_env(ENV_PATH)
+
+
+def build_plaid_client():
+    plaid_host = os.getenv('PLAID_HOST')
+    plaid_client_id = os.getenv('PLAID_CLIENT_ID')
+    plaid_secret_key = os.getenv('PLAID_SECRET_KEY')
+    return Plaid(plaid_host, plaid_client_id, plaid_secret_key)
 
 
 def get_robinhood_results():
-    robinhood_username = config('ROBINHOOD_USERNAME')
+    robinhood_username = os.getenv('ROBINHOOD_USERNAME')
     robinhood_pwd = keyring.get_password('Robinhood', robinhood_username)
     robinhood_client = Robinhood(robinhood_username, robinhood_pwd)
     results = {}
@@ -16,14 +30,25 @@ def get_robinhood_results():
     return results
 
 
-def dump_robinhood_results(build_path, results):
-    with open(build_path + '/robinhood_results.json', 'w') as fp:
-        json.dump(results, fp, indent=4)
-
-
 project_path = os.path.dirname(os.path.realpath(__file__)).rsplit(os.sep, 2)[0]
 
 build_path = project_path + '/build'
 
+plaid_client = build_plaid_client()
+
+pnc_access_token = os.getenv('PNC_PLAID_ACCESS_TOKEN')
+pnc_balance_response = plaid_client.get_balance(pnc_access_token)
+pnc_balance_results = map_balance("PNC", pnc_balance_response)
+with open(build_path + '/pnc_balance_results.json', 'w') as fp:
+    json.dump(pnc_balance_results, fp, indent=4)
+
+betterment_access_token = os.getenv('BETTERMENT_PLAID_ACCESS_TOKEN')
+betterment_balance_response = plaid_client.get_balance(betterment_access_token)
+betterment_balance_results = map_balance(
+    "BETTERMENT", betterment_balance_response)
+with open(build_path + '/betterment_balance_results.json', 'w') as fp:
+    json.dump(betterment_balance_results, fp, indent=4)
+
 robinhood_results = get_robinhood_results()
-dump_robinhood_results(build_path, robinhood_results)
+with open(build_path + '/robinhood_results.json', 'w') as fp:
+    json.dump(robinhood_results, fp, indent=4)
