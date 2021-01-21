@@ -51,6 +51,13 @@ betterment_balance_results = map_balance(betterment_balance_response)
 with open(build_path + '/accounts/betterment.json', 'w') as fp:
     json.dump(betterment_balance_results, fp, indent=4)
 
+fundrise_access_token = os.getenv('FUNDRISE_PLAID_ACCESS_TOKEN')
+print(fundrise_access_token)
+fundrise_response = plaid_client.get_accounts(fundrise_access_token)
+fundrise_results = map_balance(fundrise_response)
+with open(build_path + '/investments/fundrise.json', 'w') as fp:
+    json.dump(fundrise_results, fp, indent=4)
+
 robinhood_results = get_robinhood_results()
 with open(build_path + '/investments/robinhood.json', 'w') as fp:
     json.dump(robinhood_results, fp, indent=4)
