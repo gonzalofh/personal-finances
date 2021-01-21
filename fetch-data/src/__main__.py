@@ -39,13 +39,14 @@ build_path = project_path + '/build/data'
 plaid_client = build_plaid_client()
 
 pnc_access_token = os.getenv('PNC_PLAID_ACCESS_TOKEN')
-pnc_balance_response = plaid_client.get_balance(pnc_access_token)
+pnc_balance_response = plaid_client.get_accounts(pnc_access_token)
 pnc_balance_results = map_balance(pnc_balance_response)
 with open(build_path + '/accounts/pnc.json', 'w') as fp:
     json.dump(pnc_balance_results, fp, indent=4)
 
 betterment_access_token = os.getenv('BETTERMENT_PLAID_ACCESS_TOKEN')
-betterment_balance_response = plaid_client.get_balance(betterment_access_token)
+betterment_balance_response = plaid_client.get_accounts(
+    betterment_access_token)
 betterment_balance_results = map_balance(betterment_balance_response)
 with open(build_path + '/accounts/betterment.json', 'w') as fp:
     json.dump(betterment_balance_results, fp, indent=4)
