@@ -25,30 +25,31 @@ def get_robinhood_results():
     robinhood_pwd = keyring.get_password('Robinhood', robinhood_username)
     robinhood_client = Robinhood(robinhood_username, robinhood_pwd)
     results = {}
-    results['invested_total'] = round(robinhood_client.get_invested_total(), 2)
-    results['market_value'] = round(robinhood_client.get_market_value(), 2)
+    results['invested_total'] = round(
+        robinhood_client.get_invested_total(), 2)
+    results['market_value'] = round(
+        robinhood_client.get_market_value(), 2)
     return results
 
 
 project_path = os.path.dirname(os.path.realpath(__file__)).rsplit(os.sep, 2)[0]
 
-build_path = project_path + '/build'
+build_path = project_path + '/build/data'
 
 plaid_client = build_plaid_client()
 
 pnc_access_token = os.getenv('PNC_PLAID_ACCESS_TOKEN')
 pnc_balance_response = plaid_client.get_balance(pnc_access_token)
-pnc_balance_results = map_balance("PNC", pnc_balance_response)
-with open(build_path + '/pnc_balance_results.json', 'w') as fp:
+pnc_balance_results = map_balance(pnc_balance_response)
+with open(build_path + '/accounts/pnc.json', 'w') as fp:
     json.dump(pnc_balance_results, fp, indent=4)
 
 betterment_access_token = os.getenv('BETTERMENT_PLAID_ACCESS_TOKEN')
 betterment_balance_response = plaid_client.get_balance(betterment_access_token)
-betterment_balance_results = map_balance(
-    "BETTERMENT", betterment_balance_response)
-with open(build_path + '/betterment_balance_results.json', 'w') as fp:
+betterment_balance_results = map_balance(betterment_balance_response)
+with open(build_path + '/accounts/betterment.json', 'w') as fp:
     json.dump(betterment_balance_results, fp, indent=4)
 
 robinhood_results = get_robinhood_results()
-with open(build_path + '/robinhood_results.json', 'w') as fp:
+with open(build_path + '/investments/robinhood.json', 'w') as fp:
     json.dump(robinhood_results, fp, indent=4)

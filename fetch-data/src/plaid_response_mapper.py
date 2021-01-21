@@ -6,9 +6,8 @@ def _map_pnc_balance_accounts(account):
     }
 
 
-def map_balance(institution, response):
+def map_balance(response):
     accounts = list(map(_map_pnc_balance_accounts, response['accounts']))
     return {
-        "institution": institution,
         "accounts": accounts
     }

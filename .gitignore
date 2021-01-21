@@ -1,8 +1,9 @@
 .DS_Store
-
 .vscode
+.cache
 
-build/
+**/build/
+**/tmp/
 
 **/node_modules
 
