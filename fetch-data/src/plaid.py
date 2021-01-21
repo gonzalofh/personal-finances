@@ -19,14 +19,14 @@ class Plaid:
         self.secret_key = secret_key
         self.h = httplib2.Http(".cache")
 
-    def get_balance(self, access_token):
+    def get_accounts(self, access_token):
         body = {
             "client_id": self.client_id,
             "secret": self.secret_key,
             "access_token": access_token
         }
         body = dumps(body)
-        url = self.host + "/accounts/balance/get"
+        url = self.host + "/accounts/get"
         (resp, content) = self.h.request(
             url, "POST", body=body, headers=HEADERS)
         content = loads(content.decode("utf-8"))
