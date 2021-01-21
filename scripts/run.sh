@@ -20,4 +20,4 @@ source ${SCRIPTS_FOLDER}/fetch-data.sh
 
 source ${SCRIPTS_FOLDER}/generate-report.sh
 
-open ${PROJECT_FOLDER}/build/report.html
+open ${PROJECT_FOLDER}/build/html/report.html

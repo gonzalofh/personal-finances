@@ -26,7 +26,6 @@ class Plaid:
             "access_token": access_token
         }
         body = dumps(body)
-        print(body)
         url = self.host + "/accounts/balance/get"
         (resp, content) = self.h.request(
             url, "POST", body=body, headers=HEADERS)
