@@ -1,4 +1,0 @@
-robin_stocks
-python-env-loader
-keyring
-httplib2

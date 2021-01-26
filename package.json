@@ -1,0 +1,29 @@
+{
+  "name": "personal-finances",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.babel.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "through2": "^4.0.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonzalofh/personal-finances.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonzalofh/personal-finances/issues"
+  },
+  "homepage": "https://github.com/gonzalofh/personal-finances#readme"
+}
