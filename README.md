@@ -14,12 +14,12 @@
     Use your accounts linked with Plaid to generate balance HTML reports
     <br/>
     <br/>
-    <a href="https://github.com/gonzalofh/personal-finances/wiki"><strong>Wiki docs »</strong></a>
+    <a href="https://github.com/gonzalofh/plaid-html-reports/wiki"><strong>Wiki docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gonzalofh/personal-finances/issues">Report Bug</a>
+    <a href="https://github.com/gonzalofh/plaid-html-reports/issues">Report Bug</a>
     ·
-    <a href="https://github.com/gonzalofh/personal-finances/issues">Request Feature</a>
+    <a href="https://github.com/gonzalofh/plaid-html-reports/issues">Request Feature</a>
   </p>
 </p>
 
@@ -104,7 +104,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/gonzalofh/personal-finances.git
+   git clone https://github.com/gonzalofh/plaid-html-reports.git
    ```
     <br/>
 2. Install NPM packages
@@ -118,19 +118,18 @@ This is an example of how to list things you need to use the software and how to
 4. Follow the example to fill the values:
    ```JSON
     {
-        "host": "https://development.plaid.com", // you can also use Plaid's sandbox or production mode
+        "host": "https://development.plaid.com",
         "clientId": "{{ Plaid client id }}",
         "secretKey": "{{ Plaid secret key }}",
         "institutions": [
             {
-                "name": "{{ institution 1 name }}", // name of the institution. Ex: PNC
-                "accessToken": "{{ institution 1 access token }}" // Plaid access token linked to that institution
+                "name": "{{ institution 1 name }}",
+                "accessToken": "{{ institution 1 access token }}"
             },
             {
                 "name": "{{ institution 2 name }}", 
                 "accessToken": "{{ institution 2 access token }}"
-            },
-            // you get the idea
+            }
         ]
     }
    ```
@@ -149,7 +148,7 @@ This is an example of how to list things you need to use the software and how to
    open build/html/report.html
    ```
 
-_To see other tasks you can use, please refer to the [Available Tasks](https://github.com/gonzalofh/personal-finances/wiki/Available-tasks) Wiki page_
+_To see other tasks you can use, please refer to the [Available Tasks](https://github.com/gonzalofh/plaid-html-reports/wiki/Available-tasks) Wiki page_
 
 <br/>
 
@@ -169,7 +168,7 @@ Specifically, we should be able to:
 - Use a different template rendering implementation instead of Handlebars
 - Provide custom transformation/mapping/filters for Plaid's data
 
-See the [open issues](https://github.com/gonzalofh/personal-finances/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/gonzalofh/plaid-html-reports/issues) for a list of proposed features (and known issues).
 
 <br/>
 
@@ -198,7 +197,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Gonzalo Fernandez - gonzalo.gfh@gmail.com
 
-Project Link: [https://github.com/gonzalofh/personal-finances](https://github.com/gonzalofh/personal-finances)
+Project Link: [https://github.com/gonzalofh/plaid-html-reports](https://github.com/gonzalofh/plaid-html-reports)
 
 <br/>
 
@@ -211,16 +210,16 @@ Project Link: [https://github.com/gonzalofh/personal-finances](https://github.co
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/gonzalofh/personal-finances.svg?style=for-the-badge
-[contributors-url]: https://github.com/gonzalofh/personal-finances/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/gonzalofh/personal-finances?style=for-the-badge
-[forks-url]: https://github.com/gonzalofh/personal-finances/network/members
-[stars-shield]: https://img.shields.io/github/stars/gonzalofh/personal-finances?style=for-the-badge
-[stars-url]: https://github.com/gonzalofh/personal-finances/stargazers
-[issues-shield]: https://img.shields.io/github/issues/gonzalofh/personal-finances?style=for-the-badge
-[issues-url]: https://github.com/gonzalofh/personal-finances/issues
-[license-shield]: https://img.shields.io/github/license/gonzalofh/personal-finances.svg?style=for-the-badge
-[license-url]: https://github.com/gonzalofh/personal-finances/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/gonzalofh/plaid-html-reports.svg?style=for-the-badge
+[contributors-url]: https://github.com/gonzalofh/plaid-html-reports/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/gonzalofh/plaid-html-reports?style=for-the-badge
+[forks-url]: https://github.com/gonzalofh/plaid-html-reports/network/members
+[stars-shield]: https://img.shields.io/github/stars/gonzalofh/plaid-html-reports?style=for-the-badge
+[stars-url]: https://github.com/gonzalofh/plaid-html-reports/stargazers
+[issues-shield]: https://img.shields.io/github/issues/gonzalofh/plaid-html-reports?style=for-the-badge
+[issues-url]: https://github.com/gonzalofh/plaid-html-reports/issues
+[license-shield]: https://img.shields.io/github/license/gonzalofh/plaid-html-reports.svg?style=for-the-badge
+[license-url]: https://github.com/gonzalofh/plaid-html-reports/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/gonzalofh
 [product-screenshot]: images/screenshot.png
