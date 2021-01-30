@@ -8,11 +8,13 @@
   <div id="output"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
   <script src="accountsContext.js"></script>
-  <script src="investmentsContext.js"></script>
   <script src="templates.js"></script>
   <script>
     Handlebars.registerHelper('substract', function(x,y) { x - y })
-    var html = this.templates.layout(this.contexts)
+    Handlebars.registerHelper('uppercase', function (aString) {
+      return aString.toUpperCase()
+    })
+    var html = this.templates.layout(this.context)
     this.document.getElementById("output").innerHTML = html
   </script>
 </body>
