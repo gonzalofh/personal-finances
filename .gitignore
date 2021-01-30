@@ -2,15 +2,8 @@
 .vscode
 .cache
 
-**/build/
-**/tmp/
+build/
 
 **/node_modules
-
-**/venv
-
-**/__pycache__
-
-**/.env.local
 
 plaid-credentials.json

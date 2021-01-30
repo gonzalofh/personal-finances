@@ -1,3 +1,5 @@
+'use strict';
+
 import through2 from 'through2'
 import gulp from 'gulp'
 
