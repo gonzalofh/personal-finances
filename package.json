@@ -1,6 +1,6 @@
 {
   "name": "personal-finances",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "",
   "main": "gulpfile.babel.js",
   "dependencies": {
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "git+https://github.com/gonzalofh/personal-finances.git"
   },
-  "author": "",
+  "author": "gonzalofh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gonzalofh/personal-finances/issues"

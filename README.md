@@ -134,6 +134,13 @@ This is an example of how to list things you need to use the software and how to
     }
    ```
     <br/>
+5. In order to provide a custom implementation of the transformed data between the API and the HTML context file:
+   ```sh
+    cp transform-data/mapping-template.js transform-data/mapping.js
+   ```
+    Then, all you need to do is code your own implementation inside this new file and the `transform-data/index.js` script will pick it up over the default implementation. The default implementation will only be used as a fallback in case no `transform-data/mapping.js` file is found.
+    `transform-data/mapping.js` is included in .gitignore and it should remain that way. 
+    <br/>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -166,7 +173,6 @@ Ideally, in the future, these 3 stages should be extracted into external package
 Specifically, we should be able to: 
 - Provide custom html templates
 - Use a different template rendering implementation instead of Handlebars
-- Provide custom transformation/mapping/filters for Plaid's data
 
 See the [open issues](https://github.com/gonzalofh/plaid-html-reports/issues) for a list of proposed features (and known issues).
 
