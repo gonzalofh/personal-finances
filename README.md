@@ -112,8 +112,11 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
     <br/>
-3. Create a json file and name it `plaid-credentials.js` (this file is already within the .gitignore)
-
+3. Create `plaid-credentials.js` from json template
+   ```sh
+   cp plaid-credentials-template.json plaid-credentials.json
+   ```
+   (this file is already in the .gitignore)
     <br/>
 4. Follow the example to fill the values:
    ```JSON
