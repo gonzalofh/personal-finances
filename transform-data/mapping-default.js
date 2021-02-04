@@ -1,5 +1,9 @@
 'use strict';
 
+function _round(num) {
+    return Math.round( num * 100 + Number.EPSILON ) / 100
+}
+
 module.exports = (data) => {
 
     const transformed = {};
@@ -8,8 +12,8 @@ module.exports = (data) => {
         return {
             "name": account['name'],
             "type": `${account['type']} - ${account['subtype']}`,
-            "currentBalance": account['balances']['current'],
-            "availableBalance": account['balances']['available']
+            "currentBalance": _round(account['balances']['current']),
+            "availableBalance": _round(account['balances']['available'])
         };
     });
 

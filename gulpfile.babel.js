@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import './config.js';
 import fetchData from './fetch-data/index.js';
 import transformData from './transform-data/index.js';
-import { copyHtmlToBuildDir, createContextFileFromData, mergeContextsFiles, compileTemplates } from './html-report/index.js';
+import { copyHtmlToBuildDir, compileHelpers, createContextFileFromData, mergeContextsFiles, compileTemplates } from './html-report/index.js';
 
 const plaidAccountsCredentials = JSON.parse(fs.readFileSync('./plaid-credentials.json'));
 const rawDataBuildDirectory = process.env['RAW_DATA_BUILD_DIR'];
@@ -55,6 +55,7 @@ const mergeContextFilesTask = mergeContextsFiles(`${htmlBuildDirectory}/contexts
 gulp.task('compileTemplates', compileTemplatesTask);
 gulp.task('mergeContextFiles', mergeContextFilesTask);
 gulp.task('copyHtmlToBuildDir', copyHtmlToBuildDir(`${htmlBuildDirectory}/report.html`));
+gulp.task('compileHelpers', compileHelpers(`${htmlBuildDirectory}/helpers.js`));
 
 exports.clean = gulp.parallel(cleanTasks);
 exports.compileTemplates = compileTemplatesTask;
@@ -63,5 +64,5 @@ exports.transformData = gulp.parallel(buildTasks.map(institution => institution[
 exports.createContexts = gulp.parallel(buildTasks.map(institution => institution['createContextTask']));
 exports.build = gulp.parallel(buildTasksInSeries);
 exports.mergeContextFiles = mergeContextFilesTask;
-exports.generateReport = gulp.parallel('copyHtmlToBuildDir', 'mergeContextFiles', 'compileTemplates')
-export default gulp.series(gulp.parallel(cleanTasks), gulp.parallel('compileTemplates', 'copyHtmlToBuildDir'), gulp.parallel(buildTasksInSeries), 'mergeContextFiles');
+exports.generateReport = gulp.parallel('copyHtmlToBuildDir', 'compileHelpers', 'mergeContextFiles', 'compileTemplates')
+export default gulp.series(gulp.parallel(cleanTasks), gulp.parallel('compileHelpers', 'compileTemplates', 'copyHtmlToBuildDir'), gulp.parallel(buildTasksInSeries), 'mergeContextFiles');

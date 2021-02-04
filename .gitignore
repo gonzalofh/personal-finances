@@ -8,3 +8,4 @@ build/
 
 plaid-credentials.json
 transform-data/mapping.js
+html-report/helpers.js

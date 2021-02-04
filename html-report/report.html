@@ -10,9 +10,26 @@
   <script src="accountsContext.js"></script>
   <script src="templates.js"></script>
   <script>
+    function _round(num) {
+      return Math.round( num * 100 + Number.EPSILON ) / 100
+    }
     Handlebars.registerHelper('substract', function(x,y) { x - y })
     Handlebars.registerHelper('uppercase', function (aString) {
       return aString.toUpperCase()
+    })
+    Handlebars.registerHelper('totalCurrentBalance', function (institutions) {
+      var total = Object.values(institutions)
+        .flatMap(institution => institution['accounts']
+          .map(account => account['currentBalance']))
+        .reduce((a,b) => a + b)
+        return _round(total)
+    })
+    Handlebars.registerHelper('totalAvailableBalance', function (institutions) {
+      var total = Object.values(institutions)
+        .flatMap(institution => institution['accounts']
+          .map(account => account['availableBalance']))
+        .reduce((a,b) => a + b)
+      return _round(total)
     })
     var html = this.templates.layout(this.context)
     this.document.getElementById("output").innerHTML = html
