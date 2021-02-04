@@ -1,6 +1,6 @@
 {
-  "name": "personal-finances",
-  "version": "1.5.0",
+  "name": "plaid-html-reports",
+  "version": "1.5.1",
   "description": "",
   "main": "gulpfile.babel.js",
   "dependencies": {
@@ -27,12 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gonzalofh/personal-finances.git"
+    "url": "git+https://github.com/gonzalofh/plaid-html-reports.git"
   },
   "author": "gonzalofh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gonzalofh/personal-finances/issues"
+    "url": "https://github.com/gonzalofh/plaid-html-reports/issues"
   },
-  "homepage": "https://github.com/gonzalofh/personal-finances#readme"
+  "homepage": "https://github.com/gonzalofh/plaid-html-reports#readme"
 }

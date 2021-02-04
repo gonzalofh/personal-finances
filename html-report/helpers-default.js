@@ -25,3 +25,7 @@ function totalAvailableBalance(institutions) {
         .reduce((a, b) => a + b)
     return _round(total);
 }
+
+function hasAvailableBalance(account) {
+    return account['availableBalance'] > 0;
+}
