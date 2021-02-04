@@ -8,7 +8,8 @@ import concat from 'gulp-concat';
 import handlebars from 'gulp-handlebars';
 import rename from 'gulp-rename';
 import merge from 'merge-stream';
-import { copyFile } from 'fs';
+import { copyFile, writeFile, existsSync } from 'fs';
+import compileHelpers from './compile-helpers';
 
 const _getFilename = filename => {
     return path.basename(filename, path.extname(filename))
@@ -17,6 +18,19 @@ const _getFilename = filename => {
 exports.copyHtmlToBuildDir = (outputFile) => {
     return (cb) => copyFile(`${__dirname}/report.html`, outputFile, cb);
 } 
+
+exports.compileHelpers = (outputFile) => {
+    return (cb) => {
+        let helpersFile;
+        if (existsSync(`${__dirname}/helpers.js`)) {
+            helpersFile = `${__dirname}/helpers.js`;
+        } else {
+            helpersFile = `${__dirname}/helpers-default.js`;
+        }
+        const helpers = compileHelpers(helpersFile);
+        writeFile(outputFile, helpers, 'utf8', cb);
+    }
+}
 
 exports.createContextFileFromData = (dataFile, namespace, outputFile) => {
     return () => {

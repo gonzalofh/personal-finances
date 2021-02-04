@@ -144,6 +144,14 @@ This is an example of how to list things you need to use the software and how to
     Then, all you need to do is code your own implementation inside this new file and the `transform-data/index.js` script will pick it up over the default implementation. The default implementation will only be used as a fallback in case no `transform-data/mapping.js` file is found.
     `transform-data/mapping.js` is included in .gitignore and it should remain that way. 
     <br/>
+6. Should you want to render computations/operations with the transformed data, you can do so with helper functions:
+   ```sh
+    cp html-report/helpers-template.js html-report/helpers.js
+   ```
+    Instructions on how to implement your custom helper functions can be found within the created file.
+    The `html-report/index.js` script will pick up this new file over the default implementation. The default implementation will only be used as a fallback in case no `html-report/helpers.js` file is found.
+    `html-report/helpers.js` is included in .gitignore and it should remain that way. 
+    <br/>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
